@@ -12,6 +12,9 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { initialItems } from '@/data';
+import Logo from '../icons/Logo';
+
+import { Button } from '../ui';
 
 const NavItems = () => {
   return (
@@ -28,25 +31,16 @@ const NavItems = () => {
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   return (
-    <header className="p-3 sticky top-0 z-50">
+    <header className="p-3 fixed w-[100vw] top-0 z-50">
       <div className="container mx-auto  max-w-[1104px]  rounded-3xl  px-5 py-4 mt-5   opacity-[90%]   glass-effect">
         <nav className="flex justify-between items-center ">
-          <div className="text-2xl font-bold">Logo</div>
+          {/* <div className="text-2xl font-bold">Logo</div> */}
+          <Logo />
           <NavItems />
           <div className="flex gap-4 space-x-2 mx-5 items-center">
             <div className="md:flex hidden gap-4 space-x-2">
-              <button
-                className="w-[60px] h-[32px] rounded-md text-[16px] text-[#111827] border
-            "
-              >
-                Login
-              </button>
-              <button
-                className="w-[70px] h-[34px] rounded-md text-[14px]  border bg-black text-white
-            "
-              >
-                Register
-              </button>
+              <Button variant="outline">Login</Button>
+              <Button>Register</Button>
             </div>
 
             <div className="md:hidden">
