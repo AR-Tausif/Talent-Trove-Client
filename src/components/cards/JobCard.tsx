@@ -3,9 +3,13 @@ import { CiTimer } from 'react-icons/ci';
 import { FaMoneyBill1Wave } from 'react-icons/fa6';
 import Image from 'next/image';
 import { cn } from '@/utils';
-interface Props extends React.ComponentProps<'div'> {}
+import { IJob } from '@/app/interface/apiData';
+interface Props extends React.ComponentProps<'div'> {
+  job: IJob;
+}
 
 export const JobCard = ({ ...props }: Props) => {
+  const { job } = props;
   return (
     <div {...props}>
       <div className="flex flex-col p-6 rounded-lg border border-gray-200 shadow-sm hover:bg-indigo-100 hover:shadow-lg transition-shadow duration-300   ">
@@ -21,9 +25,7 @@ export const JobCard = ({ ...props }: Props) => {
               />
             </div>
             <div>
-              <h2 className="lg:text-lg sm:text-sm   ">
-                Software Engineer (Android), Libraries
-              </h2>
+              <h2 className="lg:text-lg sm:text-sm   ">{job.title}</h2>
             </div>
           </div>
           <div className="text-gray-400 hover:text-gray-600 cursor-pointer">

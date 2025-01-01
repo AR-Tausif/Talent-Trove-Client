@@ -1,5 +1,6 @@
 import { JobCard } from '../cards/JobCard';
 import { SectionHeader } from '../shared';
+import { Button } from '../ui';
 
 interface Props extends React.ComponentProps<'div'> {}
 
@@ -17,6 +18,9 @@ export const FeatureJob = ({ ...props }: Props) => {
         <JobCard />
         <JobCard />
         <JobCard />
+      </div>
+      <div className="text-center my-14">
+        <Button>Browse more jobs </Button>
       </div>
     </div>
   );
