@@ -1,3 +1,4 @@
+import { IJob } from '@/app/interface/apiData';
 import axiosClient from './axiosClient';
 
 export const getAllJobs = async () => {

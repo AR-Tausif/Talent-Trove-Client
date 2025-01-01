@@ -2,8 +2,9 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL:
-    `${process.env.NEXT_PUBLIC_API_URL}/api/v1` || 'http://localhost:5000/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL
+    ? `${process.env.NEXT_PUBLIC_API_URL}/api/v1`
+    : 'http://localhost:5000/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -12,9 +13,11 @@ const axiosClient = axios.create({
 // Request interceptor to add Authorization headers
 axiosClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `${token}`;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `${token}`;
+      }
     }
     return config;
   },
@@ -25,8 +28,13 @@ axiosClient.interceptors.request.use(
 axiosClient.interceptors.response.use(
   (response) => response.data, // Extract data directly
   (error) => {
-    console.error('API Error:', error.response?.data || error.message);
-    return Promise.reject(error.response?.data || error.message);
+    const errorMessage =
+      error.response?.data?.message || error.message || 'An error occurred';
+    console.error('API Error:', errorMessage);
+    return Promise.reject({
+      message: errorMessage,
+      status: error.response?.status,
+    });
   }
 );
 
