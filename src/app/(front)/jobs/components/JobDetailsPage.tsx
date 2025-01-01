@@ -1,49 +1,24 @@
+import { IJob } from '@/app/interface/apiData';
 import Link from 'next/link';
 import React from 'react';
-
-export default function JobDetailsPage() {
+interface Props {
+  job: IJob;
+}
+export default function JobDetailsPage({ job }: Props) {
   return (
     <React.Fragment>
-      <div className="bg-gray-50/90 py-6 w-full">
-        <div className="container flex items-center justify-center px-4 text-center md:px-6">
-          <div className="space-y-3">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-              Senior Product Designer
-            </h1>
-            <div className="inline-flex items-center gap-2 text-sm font-medium md:gap-4">
-              <p className="text-gray-500">at</p>
-              <img
-                src="/placeholder.svg"
-                width="120"
-                height="40"
-                alt="Logo"
-                className="aspect-[3/1] overflow-hidden rounded-lg object-contain object-center"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="container grid gap-10 px-4 py-8 text-base md:gap-16 md:px-6 lg:grid-cols-4 lg:gap-12 xl:gap-20">
         <div className="space-y-4 lg:col-start-2 lg:col-span-3 xl:space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">
-              Senior Product Designer
+              {job.title}
             </h2>
             <p className="text-gray-500 dark:text-gray-400">Full-Time</p>
           </div>
           <div className="space-y-4 text-lg/relaxed lg:space-y-6 xl:text-xl/relaxed">
             <div>
               <h3 className="text-xl font-semibold">Description</h3>
-              <p>
-                We are looking for a Senior Product Designer who will be
-                responsible for delivering the best online user experience,
-                which makes your role extremely important for our success and
-                ensuring customer satisfaction and loyalty. The ideal candidate
-                will have experience in working with numerous different design
-                platforms such as mobile and desktop. The candidate will also
-                have experience in working with complex backend and frontend
-                systems.
-              </p>
+              <p>{job.description}</p>
             </div>
             <div>
               <h3 className="text-xl font-semibold">Requirements</h3>

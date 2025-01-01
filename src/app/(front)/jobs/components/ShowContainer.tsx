@@ -48,9 +48,9 @@ export const ShowJobs = ({ ...props }: Props) => {
         <h1 className="px-4 text-3xl font-bold mb-6 mt-7">Latest Jobs</h1>
 
         <div id="job container" className="space-y-3">
-          {Array.from({ length: 10 }).map((_, index) => (
-            <Link href="/jobs/62151" key={index}>
-              <JobCard />
+          {jobs.map((job: IJob, index) => (
+            <Link href={`/jobs/${job.id}`} key={index}>
+              <JobCard job={job} />
             </Link>
           ))}
         </div>

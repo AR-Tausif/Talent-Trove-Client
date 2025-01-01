@@ -1,4 +1,5 @@
 export interface IJob {
+  id: number;
   company: number;
   title: string;
   createdBy: number; //user id
